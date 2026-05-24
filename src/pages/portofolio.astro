@@ -1,0 +1,24 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import CardPortofolio from "../components/CardPortofolio.astro";
+
+const portfolioModules = import.meta.glob("../content/portofolio/*.md", { eager: true });
+const portfolios = Object.entries(portfolioModules).map(([path, module]) => ({
+  slug: path.split("/").pop().replace(".md", ""),
+  ...module.frontmatter,
+}));
+---
+
+<BaseLayout title="Portofolio | EO Wedding Astro">
+  <section class="page-hero compact">
+    <p class="eyebrow">Portofolio</p>
+    <h1>Dokumentasi acara yang sudah kami tangani.</h1>
+    <p>Setiap acara punya karakter sendiri. Di sini klien bisa melihat contoh konsep, suasana, dan detail pengerjaan kami.</p>
+  </section>
+
+  <section class="section">
+    <div class="card-grid">
+      {portfolios.map((item) => <CardPortofolio item={item} />)}
+    </div>
+  </section>
+</BaseLayout>

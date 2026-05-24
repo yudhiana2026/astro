@@ -1,0 +1,6 @@
+<svg width="220" height="64" viewBox="0 0 220 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="220" height="64" rx="8" fill="#283618"/>
+  <path d="M36 42C29.4 36.5 24 31.9 24 25.8C24 21.8 27.1 19 30.8 19C33 19 35 20 36 21.7C37 20 39 19 41.2 19C44.9 19 48 21.8 48 25.8C48 31.9 42.6 36.5 36 42Z" fill="#F2CC8F"/>
+  <text x="63" y="30" fill="#FFF8ED" font-family="Arial, sans-serif" font-size="18" font-weight="700">EO Wedding</text>
+  <text x="63" y="48" fill="#E9C46A" font-family="Arial, sans-serif" font-size="12" letter-spacing="1">ASTRO CMS</text>
+</svg>

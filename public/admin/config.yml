@@ -1,0 +1,56 @@
+backend:
+  name: git-gateway
+  branch: main
+
+local_backend: true
+media_folder: "public/images"
+public_folder: "/images"
+logo_url: "/admin/logo.svg"
+locale: "id"
+
+collections:
+  - name: "portofolio"
+    label: "Portofolio"
+    folder: "src/content/portofolio"
+    create: true
+    slug: "{{slug}}"
+    format: "frontmatter"
+    fields:
+      - { label: "Judul", name: "title", widget: "string" }
+      - { label: "Tanggal Acara", name: "date", widget: "datetime", format: "YYYY-MM-DD" }
+      - { label: "Lokasi", name: "location", widget: "string" }
+      - { label: "Kategori", name: "category", widget: "string", default: "Wedding" }
+      - { label: "Foto Utama", name: "cover", widget: "image" }
+      - { label: "Ringkasan", name: "excerpt", widget: "text" }
+      - { label: "Isi Cerita", name: "body", widget: "markdown" }
+
+  - name: "testimoni"
+    label: "Testimoni"
+    folder: "src/content/testimoni"
+    create: true
+    slug: "{{slug}}"
+    format: "frontmatter"
+    fields:
+      - { label: "Nama Pasangan", name: "title", widget: "string" }
+      - { label: "Tanggal", name: "date", widget: "datetime", format: "YYYY-MM-DD" }
+      - { label: "Foto", name: "image", widget: "image", required: false }
+      - { label: "Rating", name: "rating", widget: "number", min: 1, max: 5, default: 5 }
+      - { label: "Kutipan", name: "quote", widget: "text" }
+      - { label: "Isi Lengkap", name: "body", widget: "markdown" }
+
+  - name: "paket"
+    label: "Paket Layanan"
+    folder: "src/content/paket"
+    create: true
+    slug: "{{slug}}"
+    format: "frontmatter"
+    fields:
+      - { label: "Nama Paket", name: "title", widget: "string" }
+      - { label: "Harga", name: "price", widget: "string" }
+      - { label: "Unggulan", name: "featured", widget: "boolean", default: false }
+      - { label: "Ringkasan", name: "description", widget: "text" }
+      - label: "Fasilitas"
+        name: "features"
+        widget: "list"
+        field: { label: "Fasilitas", name: "feature", widget: "string" }
+      - { label: "Detail Paket", name: "body", widget: "markdown" }

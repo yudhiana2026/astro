@@ -1,0 +1,53 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+export function getStaticPaths() {
+  const modules = {
+    ...import.meta.glob("../content/portofolio/*.md", { eager: true }),
+    ...import.meta.glob("../content/paket/*.md", { eager: true }),
+    ...import.meta.glob("../content/testimoni/*.md", { eager: true }),
+  };
+
+  const entries = Object.entries(modules).map(([path, module]) => {
+    const parts = path.split("/");
+    return {
+      slug: parts.pop().replace(".md", ""),
+      collection: parts.pop(),
+      frontmatter: module.frontmatter,
+      Content: module.Content,
+    };
+  });
+
+  return entries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { frontmatter } = entry;
+const Content = entry.Content;
+---
+
+<BaseLayout title={`${frontmatter.title} | EO Wedding Astro`}>
+  <article class="detail-page">
+    {frontmatter.cover && <img class="detail-cover" src={frontmatter.cover} alt={`Foto ${frontmatter.title}`} />}
+    {frontmatter.image && <img class="detail-cover" src={frontmatter.image} alt={`Foto ${frontmatter.title}`} />}
+    <div class="detail-content">
+      <p class="eyebrow">{entry.collection}</p>
+      <h1>{frontmatter.title}</h1>
+      {frontmatter.location && <p class="lead">{frontmatter.location}</p>}
+      {frontmatter.price && <p class="lead">{frontmatter.price}</p>}
+      {frontmatter.excerpt && <p>{frontmatter.excerpt}</p>}
+      {frontmatter.description && <p>{frontmatter.description}</p>}
+      {frontmatter.features && (
+        <ul class="feature-list">
+          {frontmatter.features.map((feature) => <li>{feature}</li>)}
+        </ul>
+      )}
+      <div class="prose">
+        <Content />
+      </div>
+    </div>
+  </article>
+</BaseLayout>

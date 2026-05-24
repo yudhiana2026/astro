@@ -1,0 +1,36 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Kontak | EO Wedding Astro">
+  <section class="page-hero compact">
+    <p class="eyebrow">Kontak</p>
+    <h1>Mari mulai dari tanggal acara dan kebutuhan utama.</h1>
+    <p>Kirim detail rencana pernikahan agar tim kami bisa menyiapkan rekomendasi paket dan estimasi awal.</p>
+  </section>
+
+  <section class="section contact-layout">
+    <div>
+      <h2>Hubungi tim kami</h2>
+      <p>WhatsApp: <a href="https://wa.me/6281234567890">+62 812-3456-7890</a></p>
+      <p>Email: <a href="mailto:hello@eowedding.local">hello@eowedding.local</a></p>
+      <p>Area layanan: Jabodetabek dan kota lain sesuai kebutuhan.</p>
+    </div>
+    <form name="kontak" method="post" data-netlify="true">
+      <input type="hidden" name="form-name" value="kontak" />
+      <label>
+        Nama
+        <input type="text" name="nama" required />
+      </label>
+      <label>
+        Email
+        <input type="email" name="email" required />
+      </label>
+      <label>
+        Pesan
+        <textarea name="pesan" rows="5" required></textarea>
+      </label>
+      <button class="button primary" type="submit">Kirim</button>
+    </form>
+  </section>
+</BaseLayout>

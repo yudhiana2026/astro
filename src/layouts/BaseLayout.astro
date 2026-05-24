@@ -1,0 +1,29 @@
+---
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import WhatsAppButton from "../components/WhatsAppButton.astro";
+import "../styles/global.css";
+
+const {
+  title = "EO Wedding Astro",
+  description = "Wedding organizer profesional untuk acara pernikahan yang rapi, hangat, dan berkesan.",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <Navbar />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+    <WhatsAppButton />
+  </body>
+</html>

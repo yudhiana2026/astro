@@ -1,0 +1,65 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import CardPortofolio from "../components/CardPortofolio.astro";
+
+const portfolioModules = import.meta.glob("../content/portofolio/*.md", { eager: true });
+const paketModules = import.meta.glob("../content/paket/*.md", { eager: true });
+const testimoniModules = import.meta.glob("../content/testimoni/*.md", { eager: true });
+
+const toEntry = ([path, module]) => ({
+  slug: path.split("/").pop().replace(".md", ""),
+  ...module.frontmatter,
+});
+
+const portfolios = Object.entries(portfolioModules).map(toEntry).slice(0, 3);
+const packages = Object.entries(paketModules).map(toEntry);
+const testimonials = Object.entries(testimoniModules).map(toEntry);
+---
+
+<BaseLayout>
+  <Hero />
+
+  <section class="section">
+    <div class="section-heading">
+      <p class="eyebrow">Layanan</p>
+      <h2>Paket yang bisa disesuaikan dengan kebutuhan acara.</h2>
+    </div>
+    <div class="package-grid">
+      {packages.map((paket) => (
+        <article class={paket.featured ? "package-card featured" : "package-card"}>
+          <p class="eyebrow">{paket.featured ? "Favorit" : "Paket"}</p>
+          <h3>{paket.title}</h3>
+          <strong>{paket.price}</strong>
+          <p>{paket.description}</p>
+          <a href={`/${paket.slug}`}>Lihat detail</a>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="section section-muted">
+    <div class="section-heading">
+      <p class="eyebrow">Portofolio</p>
+      <h2>Momen yang sudah kami bantu wujudkan.</h2>
+    </div>
+    <div class="card-grid">
+      {portfolios.map((item) => <CardPortofolio item={item} />)}
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-heading">
+      <p class="eyebrow">Testimoni</p>
+      <h2>Kata pasangan yang pernah bekerja bersama kami.</h2>
+    </div>
+    <div class="testimonial-grid">
+      {testimonials.map((item) => (
+        <figure class="testimonial-card">
+          <blockquote>{item.quote}</blockquote>
+          <figcaption>{item.title}</figcaption>
+        </figure>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

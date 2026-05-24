@@ -1,0 +1,18 @@
+---
+const links = [
+  { href: "/", label: "Beranda" },
+  { href: "/portofolio", label: "Portofolio" },
+  { href: "/tentang", label: "Tentang" },
+  { href: "/kontak", label: "Kontak" },
+];
+---
+
+<header class="site-header">
+  <a href="/" class="brand" aria-label="EO Wedding Astro">
+    <span class="brand-mark">EW</span>
+    <span>EO Wedding</span>
+  </a>
+  <nav aria-label="Navigasi utama">
+    {links.map((link) => <a href={link.href}>{link.label}</a>)}
+  </nav>
+</header>
