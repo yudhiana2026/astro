@@ -3,12 +3,46 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Hero from "../components/Hero.astro";
 import CardPortofolio from "../components/CardPortofolio.astro";
 
-const portfolioModules = import.meta.glob("../content/portofolio/*.md", { eager: true });
-const paketModules = import.meta.glob("../content/paket/*.md", { eager: true });
-const testimoniModules = import.meta.glob("../content/testimoni/*.md", { eager: true });
+type MarkdownModule<T extends Record<string, unknown>> = {
+  frontmatter: T;
+};
 
-const toEntry = ([path, module]) => ({
-  slug: path.split("/").pop().replace(".md", ""),
+type PortfolioFrontmatter = {
+  title: string;
+  date: string;
+  location: string;
+  category: string;
+  cover: string;
+  excerpt: string;
+};
+
+type PaketFrontmatter = {
+  title: string;
+  price: string;
+  featured: boolean;
+  description: string;
+  features: string[];
+};
+
+type TestimoniFrontmatter = {
+  title: string;
+  date: string;
+  image?: string;
+  rating: number;
+  quote: string;
+};
+
+const getSlugFromPath = (path: string) => {
+  const filename = path.split("/").pop() ?? "";
+  return filename.replace(".md", "");
+};
+
+const portfolioModules = import.meta.glob<MarkdownModule<PortfolioFrontmatter>>("../content/portofolio/*.md", { eager: true });
+const paketModules = import.meta.glob<MarkdownModule<PaketFrontmatter>>("../content/paket/*.md", { eager: true });
+const testimoniModules = import.meta.glob<MarkdownModule<TestimoniFrontmatter>>("../content/testimoni/*.md", { eager: true });
+
+const toEntry = <T extends Record<string, unknown>>([path, module]: [string, MarkdownModule<T>]) => ({
+  slug: getSlugFromPath(path),
   ...module.frontmatter,
 });
 

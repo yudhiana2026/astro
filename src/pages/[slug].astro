@@ -1,18 +1,48 @@
 ---
+import type { AstroComponentFactory } from "astro/runtime/server/index.js";
 import BaseLayout from "../layouts/BaseLayout.astro";
+
+type DetailFrontmatter = {
+  title: string;
+  date?: string;
+  location?: string;
+  category?: string;
+  cover?: string;
+  excerpt?: string;
+  image?: string;
+  rating?: number;
+  quote?: string;
+  price?: string;
+  featured?: boolean;
+  description?: string;
+  features?: string[];
+};
+
+type MarkdownModule = {
+  frontmatter: DetailFrontmatter;
+  Content: AstroComponentFactory;
+};
+
+type DetailEntry = {
+  slug: string;
+  collection: string;
+  frontmatter: DetailFrontmatter;
+  Content: AstroComponentFactory;
+};
 
 export function getStaticPaths() {
   const modules = {
-    ...import.meta.glob("../content/portofolio/*.md", { eager: true }),
-    ...import.meta.glob("../content/paket/*.md", { eager: true }),
-    ...import.meta.glob("../content/testimoni/*.md", { eager: true }),
+    ...import.meta.glob<MarkdownModule>("../content/portofolio/*.md", { eager: true }),
+    ...import.meta.glob<MarkdownModule>("../content/paket/*.md", { eager: true }),
+    ...import.meta.glob<MarkdownModule>("../content/testimoni/*.md", { eager: true }),
   };
 
   const entries = Object.entries(modules).map(([path, module]) => {
     const parts = path.split("/");
+    const filename = parts.pop() ?? "";
     return {
-      slug: parts.pop().replace(".md", ""),
-      collection: parts.pop(),
+      slug: filename.replace(".md", ""),
+      collection: parts.pop() ?? "",
       frontmatter: module.frontmatter,
       Content: module.Content,
     };
@@ -24,7 +54,7 @@ export function getStaticPaths() {
   }));
 }
 
-const { entry } = Astro.props;
+const { entry } = Astro.props as { entry: DetailEntry };
 const { frontmatter } = entry;
 const Content = entry.Content;
 ---
@@ -42,7 +72,7 @@ const Content = entry.Content;
       {frontmatter.description && <p>{frontmatter.description}</p>}
       {frontmatter.features && (
         <ul class="feature-list">
-          {frontmatter.features.map((feature) => <li>{feature}</li>)}
+          {frontmatter.features.map((feature: string) => <li>{feature}</li>)}
         </ul>
       )}
       <div class="prose">

@@ -2,9 +2,27 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import CardPortofolio from "../components/CardPortofolio.astro";
 
-const portfolioModules = import.meta.glob("../content/portofolio/*.md", { eager: true });
+type PortfolioFrontmatter = {
+  title: string;
+  date: string;
+  location: string;
+  category: string;
+  cover: string;
+  excerpt: string;
+};
+
+type MarkdownModule<T extends Record<string, unknown>> = {
+  frontmatter: T;
+};
+
+const getSlugFromPath = (path: string) => {
+  const filename = path.split("/").pop() ?? "";
+  return filename.replace(".md", "");
+};
+
+const portfolioModules = import.meta.glob<MarkdownModule<PortfolioFrontmatter>>("../content/portofolio/*.md", { eager: true });
 const portfolios = Object.entries(portfolioModules).map(([path, module]) => ({
-  slug: path.split("/").pop().replace(".md", ""),
+  slug: getSlugFromPath(path),
   ...module.frontmatter,
 }));
 ---
