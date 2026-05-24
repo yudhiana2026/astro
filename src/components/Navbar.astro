@@ -7,12 +7,12 @@ const links = [
 ];
 ---
 
-<header class="site-header">
-  <a href="/" class="brand" aria-label="EO Wedding Astro">
-    <span class="brand-mark">EW</span>
+<header class="sticky inset-x-0 top-0 z-20 flex flex-col items-start gap-4 border-b border-forest/10 bg-bg/90 px-[clamp(20px,5vw,72px)] py-4 backdrop-blur md:flex-row md:items-center md:justify-between">
+  <a href="/" class="inline-flex items-center gap-2.5 font-extrabold" aria-label="EO Wedding Astro">
+    <span class="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-forest text-[13px] font-extrabold text-bg">EW</span>
     <span>EO Wedding</span>
   </a>
-  <nav aria-label="Navigasi utama">
-    {links.map((link) => <a href={link.href}>{link.label}</a>)}
+  <nav class="flex flex-wrap gap-x-[22px] gap-y-2" aria-label="Navigasi utama">
+    {links.map((link) => <a class="text-[0.95rem] font-bold text-muted transition hover:text-forest" href={link.href}>{link.label}</a>)}
   </nav>
 </header>

@@ -2,14 +2,14 @@
 const { item } = Astro.props;
 ---
 
-<article class="portfolio-card">
-  <a href={`/${item.slug}`} aria-label={`Lihat detail ${item.title}`}>
-    <img src={item.cover} alt={`Foto ${item.title}`} loading="lazy" />
-    <div>
-      <p class="eyebrow">{item.category}</p>
-      <h3>{item.title}</h3>
-      <p>{item.excerpt}</p>
-      <span>{item.location}</span>
+<article class="overflow-hidden rounded-lg border border-forest/10 bg-white shadow-soft">
+  <a class="grid h-full" href={`/${item.slug}`} aria-label={`Lihat detail ${item.title}`}>
+    <img class="aspect-[4/3] w-full object-cover" src={item.cover} alt={`Foto ${item.title}`} loading="lazy" />
+    <div class="p-[22px]">
+      <p class="mb-2.5 text-xs font-extrabold uppercase text-coral">{item.category}</p>
+      <h3 class="mb-3 text-[1.35rem] font-extrabold leading-tight">{item.title}</h3>
+      <p class="leading-[1.7] text-muted">{item.excerpt}</p>
+      <span class="font-extrabold text-olive">{item.location}</span>
     </div>
   </a>
 </article>

@@ -54,44 +54,44 @@ const testimonials = Object.entries(testimoniModules).map(toEntry);
 <BaseLayout>
   <Hero />
 
-  <section class="section">
-    <div class="section-heading">
-      <p class="eyebrow">Layanan</p>
-      <h2>Paket yang bisa disesuaikan dengan kebutuhan acara.</h2>
+  <section class="px-[clamp(20px,5vw,72px)] py-[clamp(52px,8vw,96px)]">
+    <div class="mb-7 max-w-[760px]">
+      <p class="mb-2.5 text-xs font-extrabold uppercase text-coral">Layanan</p>
+      <h2 class="text-[clamp(1.8rem,3.4vw,3.4rem)] leading-[1.08]">Paket yang bisa disesuaikan dengan kebutuhan acara.</h2>
     </div>
-    <div class="package-grid">
+    <div class="grid grid-cols-1 gap-[22px] min-[860px]:grid-cols-3">
       {packages.map((paket) => (
-        <article class={paket.featured ? "package-card featured" : "package-card"}>
-          <p class="eyebrow">{paket.featured ? "Favorit" : "Paket"}</p>
-          <h3>{paket.title}</h3>
-          <strong>{paket.price}</strong>
-          <p>{paket.description}</p>
-          <a href={`/${paket.slug}`}>Lihat detail</a>
+        <article class:list={["overflow-hidden rounded-lg border border-forest/10 bg-white p-[22px] shadow-soft", paket.featured && "border-coral/45"]}>
+          <p class="mb-2.5 text-xs font-extrabold uppercase text-coral">{paket.featured ? "Favorit" : "Paket"}</p>
+          <h3 class="mb-3 text-[1.35rem] font-extrabold leading-tight">{paket.title}</h3>
+          <strong class="mb-3 block text-[1.2rem] text-forest">{paket.price}</strong>
+          <p class="leading-[1.7] text-muted">{paket.description}</p>
+          <a class="font-extrabold text-coral" href={`/${paket.slug}`}>Lihat detail</a>
         </article>
       ))}
     </div>
   </section>
 
-  <section class="section section-muted">
-    <div class="section-heading">
-      <p class="eyebrow">Portofolio</p>
-      <h2>Momen yang sudah kami bantu wujudkan.</h2>
+  <section class="bg-[#edf1e2] px-[clamp(20px,5vw,72px)] py-[clamp(52px,8vw,96px)]">
+    <div class="mb-7 max-w-[760px]">
+      <p class="mb-2.5 text-xs font-extrabold uppercase text-coral">Portofolio</p>
+      <h2 class="text-[clamp(1.8rem,3.4vw,3.4rem)] leading-[1.08]">Momen yang sudah kami bantu wujudkan.</h2>
     </div>
-    <div class="card-grid">
+    <div class="grid grid-cols-1 gap-[22px] min-[860px]:grid-cols-3">
       {portfolios.map((item) => <CardPortofolio item={item} />)}
     </div>
   </section>
 
-  <section class="section">
-    <div class="section-heading">
-      <p class="eyebrow">Testimoni</p>
-      <h2>Kata pasangan yang pernah bekerja bersama kami.</h2>
+  <section class="px-[clamp(20px,5vw,72px)] py-[clamp(52px,8vw,96px)]">
+    <div class="mb-7 max-w-[760px]">
+      <p class="mb-2.5 text-xs font-extrabold uppercase text-coral">Testimoni</p>
+      <h2 class="text-[clamp(1.8rem,3.4vw,3.4rem)] leading-[1.08]">Kata pasangan yang pernah bekerja bersama kami.</h2>
     </div>
-    <div class="testimonial-grid">
+    <div class="grid grid-cols-1 gap-[22px] min-[860px]:grid-cols-3">
       {testimonials.map((item) => (
-        <figure class="testimonial-card">
-          <blockquote>{item.quote}</blockquote>
-          <figcaption>{item.title}</figcaption>
+        <figure class="m-0 overflow-hidden rounded-lg border border-forest/10 bg-white p-[22px] shadow-soft">
+          <blockquote class="mb-[18px] leading-[1.7] text-muted">{item.quote}</blockquote>
+          <figcaption class="font-extrabold text-forest">{item.title}</figcaption>
         </figure>
       ))}
     </div>

@@ -1,10 +1,12 @@
 import { defineConfig } from 'astro/config';
+import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
   site: 'https://vitality-thriving-entity.ngrok-free.dev',
   trailingSlash: 'ignore',
   
   vite: {
+    plugins: [tailwindcss()],
     server: {
       host: '0.0.0.0',
       allowedHosts: [

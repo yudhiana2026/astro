@@ -60,22 +60,22 @@ const Content = entry.Content;
 ---
 
 <BaseLayout title={`${frontmatter.title} | EO Wedding Astro`}>
-  <article class="detail-page">
-    {frontmatter.cover && <img class="detail-cover" src={frontmatter.cover} alt={`Foto ${frontmatter.title}`} />}
-    {frontmatter.image && <img class="detail-cover" src={frontmatter.image} alt={`Foto ${frontmatter.title}`} />}
-    <div class="detail-content">
-      <p class="eyebrow">{entry.collection}</p>
-      <h1>{frontmatter.title}</h1>
-      {frontmatter.location && <p class="lead">{frontmatter.location}</p>}
-      {frontmatter.price && <p class="lead">{frontmatter.price}</p>}
-      {frontmatter.excerpt && <p>{frontmatter.excerpt}</p>}
-      {frontmatter.description && <p>{frontmatter.description}</p>}
+  <article class="grid">
+    {frontmatter.cover && <img class="aspect-[16/7] w-full object-cover" src={frontmatter.cover} alt={`Foto ${frontmatter.title}`} />}
+    {frontmatter.image && <img class="aspect-[16/7] w-full object-cover" src={frontmatter.image} alt={`Foto ${frontmatter.title}`} />}
+    <div class="mx-auto w-full max-w-[860px] px-5 py-[clamp(42px,7vw,84px)]">
+      <p class="mb-2.5 text-xs font-extrabold uppercase text-coral">{entry.collection}</p>
+      <h1 class="mb-[18px] text-[clamp(2rem,5vw,4.2rem)] leading-[1.04]">{frontmatter.title}</h1>
+      {frontmatter.location && <p class="text-[1.2rem] font-extrabold text-forest">{frontmatter.location}</p>}
+      {frontmatter.price && <p class="text-[1.2rem] font-extrabold text-forest">{frontmatter.price}</p>}
+      {frontmatter.excerpt && <p class="leading-[1.7] text-muted">{frontmatter.excerpt}</p>}
+      {frontmatter.description && <p class="leading-[1.7] text-muted">{frontmatter.description}</p>}
       {frontmatter.features && (
-        <ul class="feature-list">
+        <ul class="my-6 grid gap-2.5 pl-5 text-muted">
           {frontmatter.features.map((feature: string) => <li>{feature}</li>)}
         </ul>
       )}
-      <div class="prose">
+      <div class="mt-6 space-y-4 leading-[1.7] text-muted">
         <Content />
       </div>
     </div>

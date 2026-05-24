@@ -3,36 +3,36 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout title="Tentang | EO Wedding Astro">
-  <section class="page-hero compact">
-    <p class="eyebrow">Tentang Kami</p>
-    <h1>Partner pernikahan yang menjaga detail tetap tertata.</h1>
-    <p>
+  <section class="min-h-[42vh] bg-[#edf1e2] px-[clamp(20px,5vw,72px)] py-[clamp(64px,10vw,118px)]">
+    <p class="mb-2.5 text-xs font-extrabold uppercase text-coral">Tentang Kami</p>
+    <h1 class="mb-[22px] max-w-[920px] text-[clamp(2.25rem,6vw,5.8rem)] leading-[0.98]">Partner pernikahan yang menjaga detail tetap tertata.</h1>
+    <p class="max-w-[720px] text-[clamp(1rem,1.8vw,1.24rem)] leading-[1.7]">
       EO Wedding Astro membantu pasangan dan keluarga merancang acara yang indah,
       realistis, dan lancar dari persiapan sampai hari-H.
     </p>
   </section>
 
-  <section class="section two-column">
+  <section class="grid grid-cols-1 gap-[42px] px-[clamp(20px,5vw,72px)] py-[clamp(52px,8vw,96px)] min-[860px]:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
     <div>
-      <h2>Cara kami bekerja</h2>
-      <p>
+      <h2 class="mb-4 text-[clamp(1.8rem,3.4vw,3.4rem)] leading-[1.08]">Cara kami bekerja</h2>
+      <p class="leading-[1.7] text-muted">
         Kami memulai dari kebutuhan pasangan, kapasitas tamu, gaya acara, prioritas
         keluarga, dan anggaran. Dari sana kami menyusun konsep, timeline, kebutuhan
         vendor, dan koordinasi teknis.
       </p>
     </div>
-    <div class="value-list">
-      <article>
-        <h3>Terstruktur</h3>
-        <p>Rundown, vendor, dan kebutuhan teknis ditata sejak awal.</p>
+    <div class="grid gap-4">
+      <article class="overflow-hidden rounded-lg border border-forest/10 bg-white p-[22px] shadow-soft">
+        <h3 class="mb-2 text-xl font-extrabold">Terstruktur</h3>
+        <p class="leading-[1.7] text-muted">Rundown, vendor, dan kebutuhan teknis ditata sejak awal.</p>
       </article>
-      <article>
-        <h3>Personal</h3>
-        <p>Konsep acara disesuaikan dengan karakter pasangan.</p>
+      <article class="overflow-hidden rounded-lg border border-forest/10 bg-white p-[22px] shadow-soft">
+        <h3 class="mb-2 text-xl font-extrabold">Personal</h3>
+        <p class="leading-[1.7] text-muted">Konsep acara disesuaikan dengan karakter pasangan.</p>
       </article>
-      <article>
-        <h3>Tenang</h3>
-        <p>Tim lapangan menjaga alur acara agar keluarga bisa menikmati momen.</p>
+      <article class="overflow-hidden rounded-lg border border-forest/10 bg-white p-[22px] shadow-soft">
+        <h3 class="mb-2 text-xl font-extrabold">Tenang</h3>
+        <p class="leading-[1.7] text-muted">Tim lapangan menjaga alur acara agar keluarga bisa menikmati momen.</p>
       </article>
     </div>
   </section>

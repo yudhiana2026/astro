@@ -28,14 +28,14 @@ const portfolios = Object.entries(portfolioModules).map(([path, module]) => ({
 ---
 
 <BaseLayout title="Portofolio | EO Wedding Astro">
-  <section class="page-hero compact">
-    <p class="eyebrow">Portofolio</p>
-    <h1>Dokumentasi acara yang sudah kami tangani.</h1>
-    <p>Setiap acara punya karakter sendiri. Di sini klien bisa melihat contoh konsep, suasana, dan detail pengerjaan kami.</p>
+  <section class="min-h-[42vh] bg-[#edf1e2] px-[clamp(20px,5vw,72px)] py-[clamp(64px,10vw,118px)]">
+    <p class="mb-2.5 text-xs font-extrabold uppercase text-coral">Portofolio</p>
+    <h1 class="mb-[22px] max-w-[920px] text-[clamp(2.25rem,6vw,5.8rem)] leading-[0.98]">Dokumentasi acara yang sudah kami tangani.</h1>
+    <p class="max-w-[720px] text-[clamp(1rem,1.8vw,1.24rem)] leading-[1.7]">Setiap acara punya karakter sendiri. Di sini klien bisa melihat contoh konsep, suasana, dan detail pengerjaan kami.</p>
   </section>
 
-  <section class="section">
-    <div class="card-grid">
+  <section class="px-[clamp(20px,5vw,72px)] py-[clamp(52px,8vw,96px)]">
+    <div class="grid grid-cols-1 gap-[22px] min-[860px]:grid-cols-3">
       {portfolios.map((item) => <CardPortofolio item={item} />)}
     </div>
   </section>
